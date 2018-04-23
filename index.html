@@ -241,6 +241,9 @@
                   <li>
                     <a href="#obtener-autores" class="toc-h2 toc-link" data-title="obtener-autores">Obtener autores</a>
                   </li>
+                  <li>
+                    <a href="#obtener-un-autor" class="toc-h2 toc-link" data-title="obtener-un-autor">Obtener un autor</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -255,7 +258,13 @@
             <a href="#contribuidores" class="toc-h1 toc-link" data-title="contribuidores">Contribuidores</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#obtener-contribuidores" class="toc-h2 toc-link" data-title="obtener-contribuidores">Obtener contribuidores</a>
+                    <a href="#obtener-todos-los-contribuidores" class="toc-h2 toc-link" data-title="obtener-todos-los-contribuidores">Obtener todos los contribuidores</a>
+                  </li>
+                  <li>
+                    <a href="#obtener-un-contribuidor-especifico" class="toc-h2 toc-link" data-title="obtener-un-contribuidor-especifico">Obtener un contribuidor específico</a>
+                  </li>
+                  <li>
+                    <a href="#obtener-ciertos-contribuidores" class="toc-h2 toc-link" data-title="obtener-ciertos-contribuidores">Obtener ciertos contribuidores</a>
                   </li>
               </ul>
           </li>
@@ -470,6 +479,43 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 <p>Este endpoint devuelve todos los autores.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET /api/autores</code></p>
+<h2 id='obtener-un-autor'>Obtener un autor</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/autores/1"</span>
+  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>El comando de arriba devuelve un JSON para el id &quot;1&quot; estructurado de la siguiente forma:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-06T21:58:32.636596Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modificado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"basura"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"publicado"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orden"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nombre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Carlos Sáenz Gamasa"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"wikipedia"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modificado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Este endpoint devuelve el autor con el id <code>id</code>.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET /api/autores/id</code> donde <code>id</code> es el id del autor</p>
 <h1 id='editoriales'>Editoriales</h1><h2 id='obtener-editoriales'>Obtener editoriales</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
@@ -517,9 +563,9 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Este endpoint devuelve todas las editoriales.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET /api/editoriales</code></p>
-<h1 id='contribuidores'>Contribuidores</h1><h2 id='obtener-contribuidores'>Obtener contribuidores</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='contribuidores'>Contribuidores</h1><h2 id='obtener-todos-los-contribuidores'>Obtener todos los contribuidores</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
 <span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
@@ -565,8 +611,95 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Este endpoint devuelve todos los contribuidores.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET /api/contribuidores</code></p>
+<h2 id='obtener-un-contribuidor-especifico'>Obtener un contribuidor específico</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/contribuidores/3"</span>
+  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>El comando de arriba devuelve un JSON para el contribuidor con id 3, estructurado de la siguiente forma:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-06T22:50:11.809266Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modificado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"basura"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"publicado"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orden"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nombre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rafael Rubio Núñez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modificado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rol"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pais"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Este endpoint devuelve el contribuidor con id <code>id</code>.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET /api/contribuidores/id</code></p>
+<h2 id='obtener-ciertos-contribuidores'>Obtener ciertos contribuidores</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/contribuidores?ids=(2,3)"</span>
+  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+</code></pre>
+<blockquote>
+<p>El comando de arriba devuelve un JSON para los contribuidores con id 2 y 3, estructurado de la siguiente forma:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-06T22:02:45.864183Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modificado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"basura"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"publicado"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orden"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nombre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nekane Oroz Bretón"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modificado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rol"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pais"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-06T22:50:11.809266Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modificado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"basura"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"publicado"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"orden"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nombre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rafael Rubio Núñez"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"modificado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rol"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pais"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Este endpoint devuelve el conjunto de contribuidores con ids <code>(id1, id2, ..., idN)</code>.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET /api/contribuidores?ids=(id1, id2, ..., idN)</code></p>
 <h1 id='usuarios'>Usuarios</h1><h2 id='usuarios-e-reader'>Usuarios E-Reader</h2><h3 id='crear-usuario-ereaderuser'>Crear usuario EReaderUser</h3>
 <p>Usuarios <code>APIUser</code> pueden utilizar la API para crear usuarios de tipo <code>EReaderUser</code> el cual tiene acceso al lector. Para crear un usuario de este tipo, se hace un a request a <code>/api/ereaderusers/</code></p>
 
