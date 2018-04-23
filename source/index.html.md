@@ -80,7 +80,7 @@ api.kittens.get()
 ```
 
 ```shell
-curl "http://elibro.net/api/titulos"
+curl "/api/titulos"
   -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
 ```
 
@@ -160,96 +160,13 @@ Este endpoint devuelve todos los títulos (libros, revistas, tesis, manuales, ar
 
 HTTP Request | Descripción
 --------- | -------
-`GET http://elibro.net/api/titulos` | Devuelve todos los títulos
-`GET http://elibro.net/api/libros` | Devuelve todos los libros
-`GET http://elibro.net/api/revistas` | Devuelve todas las revistas
-`GET http://elibro.net/api/tesis` | Devuelve todas las tesis
-`GET http://elibro.net/api/manuales` | Devuelve todos los manuales
-`GET http://elibro.net/api/articulos` | Devuelve todos los artículos
-`GET http://elibro.net/api/monografias` | Devuelve todas las monografías
-
-
-## Obtener headers de títulos
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
-
-```shell
-curl "http://elibro.net/api/title_headers?model=Libro"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
-```
-
-> El comando de arriba devuelve para el ejemplo de la tabla "Libro" un JSON estructurado de la siguiente forma:
-
-```json
-[
-    "titulo",
-    "subtitulo",
-    "precio",
-    "precio_mupo",
-    "precio_supo",
-    "isbn",
-    "e_isbn",
-    "otro_id",
-    "volumen",
-    "edicion",
-    "fecha_entrega",
-    "fecha_publicacion",
-    "numero_copias",
-    "resumen",
-    "descripcion",
-    "ano_edicion",
-    "audiencia",
-    "materia",
-    "idioma",
-    "bisac_primario",
-    "bisac_secundario",
-    "clasificacion",
-    "derecho",
-    "autor",
-    "imprenta",
-    "moneda",
-    "pais",
-    "editorial",
-    "colecciones",
-    "contribuidores"
-]
-```
-
-Este endpoint devuelve los nombres de las columnas de la tabla del título especificado (Libro, Revista, Tesis, Manual, Articulo, Monografia).
-
-### HTTP Request
-
-`GET http://elibro.net/api/title_headers?model=Parametro`
-
-### Parametros de la query
-
-Parametro de la query | Descripción
---------- | -------
-Libro | Devuelve los nombres de las columnas de la tabla Libro
-Revista | Devuelve los nombres de las columnas de la tabla Revista
-Tesis | Devuelve los nombres de las columnas de la tabla Tesis
-Manual | Devuelve los nombres de las columnas de la tabla Manual
-Articulo | Devuelve los nombres de las columnas de la tabla Articulo
-Monografia | Devuelve los nombres de las columnas de la tabla Monografia
+`GET /api/titulos` | Devuelve todos los títulos
+`GET /api/libros` | Devuelve todos los libros
+`GET /api/revistas` | Devuelve todas las revistas
+`GET /api/tesis` | Devuelve todas las tesis
+`GET /api/manuales` | Devuelve todos los manuales
+`GET /api/articulos` | Devuelve todos los artículos
+`GET /api/monografias` | Devuelve todas las monografías
 
 
 # Autores
@@ -271,7 +188,7 @@ api.kittens.get()
 ```
 
 ```shell
-curl "http://elibro.net/api/autores"
+curl "/api/autores"
   -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
 ```
 
@@ -315,7 +232,7 @@ Este endpoint devuelve todos los autores.
 
 ### HTTP Request
 
-`GET http://elibro.net/api/autores`
+`GET /api/autores`
 
 
 # Editoriales
@@ -337,7 +254,7 @@ api.kittens.get()
 ```
 
 ```shell
-curl "http://elibro.net/api/editoriales"
+curl "/api/editoriales"
   -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
 ```
 
@@ -384,7 +301,7 @@ Este endpoint devuelve todas las editoriales.
 
 ### HTTP Request
 
-`GET http://elibro.net/api/editoriales`
+`GET /api/editoriales`
 
 
 # Contribuidores
@@ -406,7 +323,7 @@ api.kittens.get()
 ```
 
 ```shell
-curl "http://elibro.net/api/contribuidores"
+curl "/api/contribuidores"
   -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
 ```
 
@@ -452,427 +369,21 @@ Este endpoint devuelve todos los contribuidores.
 
 ### HTTP Request
 
-`GET http://elibro.net/api/contribuidores`
-
-
-# Lector
-
-## Colores
-
-### Obtener colores
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
-
-```shell
-curl "http://elibro.net/api/colores"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
-```
-
-> El comando de arriba devuelve un JSON estructurado de la siguiente forma:
-
-```json
-[
-  {
-    "id": 1,
-    "creado": "2018-04-10T16:59:16.647842Z",
-    "modificado": "2018-04-10T17:00:36.643260Z",
-    "basura": false,
-    "publicado": true,
-    "orden": 0,
-    "nombre": "Rojo",
-    "hex_color": "red",
-    "creado_por": 1,
-    "modificado_por": 1
-  },
-  {
-    "id": 2,
-    "creado": "2018-04-10T17:00:50.367846Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": true,
-    "orden": 0,
-    "nombre": "Violeta",
-    ...,
-    ...,
-  }
-]
-```
-
-Este endpoint devuelve todos los colores.
-
-#### HTTP Request
-
-`GET http://elibro.net/api/colores`
-
-
-## Sombreados
-
-### Obtener sombreados
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
-
-```shell
-curl "http://elibro.net/api/sombreados"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
-```
-
-> El comando de arriba devuelve un JSON estructurado de la siguiente forma:
-
-```json
-[
-  {
-    "id": 16,
-    "creado": "2018-04-15T00:11:57.482429Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": false,
-    "orden": 0,
-    "numero_pagina": 229,
-    "area": [
-      {
-        "bbox": {
-          "x0": 352,
-          "x1": 446,
-          "y0": 547,
-          "y1": 576
-        },
-        "text": "popular",
-        "baseline": {
-          "x0": 352,
-          "x1": 446,
-          "y0": 569,
-          "y1": 569,
-          "has_baseline": true
-        }
-      },
-      {
-        "bbox": {
-            ...
-        },
-        "text": ...,
-        "baseline": {
-            ...
-        }
-      },
-      ...,
-    ],
-    "texto": "popular se encuentra profundamente arraigado el temor a la oscu- ridad, a la falta de luz.",
-    "creado_por": 1,
-    "modificado_por": 1,
-    "usuario": 1,
-    "titulo": 4,
-    "color": 1
-  },
-  {
-    "id": 10,
-    "creado": "2018-04-10T17:08:04.345498Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": false,
-    ...,
-    ...,
-  }
-]
-```
-
-Este endpoint devuelve todos los sombreados.
-
-#### HTTP Request
-
-`GET http://elibro.net/api/sombreados`
-
-
-## Marcadores
-
-### Obtener marcadores
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
-
-```shell
-curl "http://elibro.net/api/marcadores"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
-```
-
-> El comando de arriba devuelve un JSON estructurado de la siguiente forma:
-
-```json
-[
-  {
-    "id": 1,
-    "creado": "2018-04-08T00:46:55.437564Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": false,
-    "orden": 0,
-    "numero_pagina": 24,
-    "creado_por": 1,
-    "modificado_por": 1,
-    "usuario": 1,
-    "titulo": 4
-  },
-  {
-    "id": 2,
-    "creado": "2018-04-10T23:38:34.292736Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": false,
-    "orden": 0,
-    "numero_pagina": 71,
-    "creado_por": 1,
-    "modificado_por": 1,
-    "usuario": 1,
-    "titulo": 4
-  }
-]
-```
-
-Este endpoint devuelve todos los marcadores.
-
-#### HTTP Request
-
-`GET http://elibro.net/api/marcadores`
-
-
-## Anotaciones
-
-### Obtener anotaciones
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
-
-```shell
-curl "http://elibro.net/api/anotaciones"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
-```
-
-> El comando de arriba devuelve un JSON estructurado de la siguiente forma:
-
-```json
-[
-  {
-    "id": 1,
-    "creado": "2018-04-10T23:38:04.346830Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": false,
-    "orden": 0,
-    "texto": "Hola Rafa!",
-    "numero_pagina": 133,
-    "creado_por": 1,
-    "modificado_por": 1,
-    "usuario": 1,
-    "titulo": 4
-  },
-  {
-    "id": 2,
-    "creado": "2018-04-18T21:11:50.116815Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": false,
-    "orden": 0,
-    "texto": "Hola Carlos",
-    "numero_pagina": 97,
-    "creado_por": 1,
-    "modificado_por": 1,
-    "usuario": 1,
-    "titulo": 4
-  }
-]
-```
-
-Este endpoint devuelve todas las anotaciones.
-
-#### HTTP Request
-
-`GET http://elibro.net/api/anotaciones`
+`GET /api/contribuidores`
 
 
 # Usuarios
 
-## Usuarios de la plataforma
-
-### Obtener usuarios
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
-
-```shell
-curl "http://elibro.net/api/users"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
-```
-
-> El comando de arriba devuelve un JSON estructurado de la siguiente forma:
-
-```json
-[
-  {
-    "id": 7,
-    "email": "cienciahoy2015@gmail.com",
-    "first_name": "Ana",
-    "last_name": "",
-    "foto": null
-  },
-  {
-    "id": 1,
-    "email": "admin@admin.com",
-    "first_name": "Admin",
-    "last_name": "Istrador",
-    "foto": "https://elibro-media.s3.amazonaws.com/library_center/profile/2018/02/20180226223200.jpg"
-  },
-]
-```
-
-Este endpoint devuelve todos las usuarios de la plataforma.
-
-#### HTTP Request
-
-`GET http://elibro.net/api/users`
-
-
 ## Usuarios E-Reader
-
-### Obtener EReaderUsers
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
-
-```shell
-curl "http://elibro.net/api/ereaderusers"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
-```
-
-> El comando de arriba devuelve un JSON estructurado de la siguiente forma:
-
-```json
-
-ERROR 500. VER
-
-```
-
-Este endpoint devuelve todos los usuarios con acceso al lector.
-
-#### HTTP Request
-
-`GET http://elibro.net/api/ereaderusers`
 
 ### Crear usuario EReaderUser
 
 Usuarios `APIUser` pueden utilizar la API para crear usuarios de tipo `EReaderUser` el cual tiene acceso al lector. Para crear un usuario de este tipo, se hace un a request a `/api/ereaderusers/`
 
+`POST /api/ereaderusers/`
+
 ```
 POST /api/ereaderusers/
-
 {
     "email": "correo@dominio.com",
     "password": "password",
