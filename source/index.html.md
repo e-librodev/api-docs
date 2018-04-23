@@ -547,7 +547,7 @@ Este endpoint devuelve el conjunto de contribuidores con ids `(id1, id2, ..., id
 
 ### HTTP Request
 
-`GET /api/contribuidores/(id1, id2, ..., idN)`
+`GET /api/contribuidores?ids=(id1, id2, ..., idN)`
 
 # Usuarios
 
