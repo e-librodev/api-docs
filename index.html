@@ -233,9 +233,6 @@
                   <li>
                     <a href="#obtener-titulos" class="toc-h2 toc-link" data-title="obtener-titulos">Obtener títulos</a>
                   </li>
-                  <li>
-                    <a href="#obtener-headers-de-titulos" class="toc-h2 toc-link" data-title="obtener-headers-de-titulos">Obtener headers de títulos</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -263,28 +260,8 @@
               </ul>
           </li>
           <li>
-            <a href="#lector" class="toc-h1 toc-link" data-title="lector">Lector</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#colores" class="toc-h2 toc-link" data-title="colores">Colores</a>
-                  </li>
-                  <li>
-                    <a href="#sombreados" class="toc-h2 toc-link" data-title="sombreados">Sombreados</a>
-                  </li>
-                  <li>
-                    <a href="#marcadores" class="toc-h2 toc-link" data-title="marcadores">Marcadores</a>
-                  </li>
-                  <li>
-                    <a href="#anotaciones" class="toc-h2 toc-link" data-title="anotaciones">Anotaciones</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#usuarios" class="toc-h1 toc-link" data-title="usuarios">Usuarios</a>
               <ul class="toc-list-h2">
-                  <li>
-                    <a href="#usuarios-de-la-plataforma" class="toc-h2 toc-link" data-title="usuarios-de-la-plataforma">Usuarios de la plataforma</a>
-                  </li>
                   <li>
                     <a href="#usuarios-e-reader" class="toc-h2 toc-link" data-title="usuarios-e-reader">Usuarios E-Reader</a>
                   </li>
@@ -341,7 +318,7 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://elibro.net/api/titulos"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/titulos"</span>
   -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
 
@@ -419,118 +396,32 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 </tr>
 </thead><tbody>
 <tr>
-<td><code>GET http://elibro.net/api/titulos</code></td>
+<td><code>GET /api/titulos</code></td>
 <td>Devuelve todos los títulos</td>
 </tr>
 <tr>
-<td><code>GET http://elibro.net/api/libros</code></td>
+<td><code>GET /api/libros</code></td>
 <td>Devuelve todos los libros</td>
 </tr>
 <tr>
-<td><code>GET http://elibro.net/api/revistas</code></td>
+<td><code>GET /api/revistas</code></td>
 <td>Devuelve todas las revistas</td>
 </tr>
 <tr>
-<td><code>GET http://elibro.net/api/tesis</code></td>
+<td><code>GET /api/tesis</code></td>
 <td>Devuelve todas las tesis</td>
 </tr>
 <tr>
-<td><code>GET http://elibro.net/api/manuales</code></td>
+<td><code>GET /api/manuales</code></td>
 <td>Devuelve todos los manuales</td>
 </tr>
 <tr>
-<td><code>GET http://elibro.net/api/articulos</code></td>
+<td><code>GET /api/articulos</code></td>
 <td>Devuelve todos los artículos</td>
 </tr>
 <tr>
-<td><code>GET http://elibro.net/api/monografias</code></td>
+<td><code>GET /api/monografias</code></td>
 <td>Devuelve todas las monografías</td>
-</tr>
-</tbody></table>
-<h2 id='obtener-headers-de-titulos'>Obtener headers de títulos</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://elibro.net/api/title_headers?model=Libro"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>El comando de arriba devuelve para el ejemplo de la tabla &quot;Libro&quot; un JSON estructurado de la siguiente forma:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="s2">"titulo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"subtitulo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"precio"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"precio_mupo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"precio_supo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"isbn"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"e_isbn"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"otro_id"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"volumen"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"edicion"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fecha_entrega"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fecha_publicacion"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"numero_copias"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"resumen"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"descripcion"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ano_edicion"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"audiencia"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"materia"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"idioma"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bisac_primario"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bisac_secundario"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"clasificacion"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"derecho"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"autor"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"imprenta"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"moneda"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"pais"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"editorial"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"colecciones"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"contribuidores"</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>Este endpoint devuelve los nombres de las columnas de la tabla del título especificado (Libro, Revista, Tesis, Manual, Articulo, Monografia).</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://elibro.net/api/title_headers?model=Parametro</code></p>
-<h3 id='parametros-de-la-query'>Parametros de la query</h3>
-<table><thead>
-<tr>
-<th>Parametro de la query</th>
-<th>Descripción</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Libro</td>
-<td>Devuelve los nombres de las columnas de la tabla Libro</td>
-</tr>
-<tr>
-<td>Revista</td>
-<td>Devuelve los nombres de las columnas de la tabla Revista</td>
-</tr>
-<tr>
-<td>Tesis</td>
-<td>Devuelve los nombres de las columnas de la tabla Tesis</td>
-</tr>
-<tr>
-<td>Manual</td>
-<td>Devuelve los nombres de las columnas de la tabla Manual</td>
-</tr>
-<tr>
-<td>Articulo</td>
-<td>Devuelve los nombres de las columnas de la tabla Articulo</td>
-</tr>
-<tr>
-<td>Monografia</td>
-<td>Devuelve los nombres de las columnas de la tabla Monografia</td>
 </tr>
 </tbody></table>
 <h1 id='autores'>Autores</h1><h2 id='obtener-autores'>Obtener autores</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
@@ -541,7 +432,7 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://elibro.net/api/autores"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/autores"</span>
   -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
 
@@ -577,8 +468,8 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Este endpoint devuelve todos los autores.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://elibro.net/api/autores</code></p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /api/autores</code></p>
 <h1 id='editoriales'>Editoriales</h1><h2 id='obtener-editoriales'>Obtener editoriales</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
@@ -587,7 +478,7 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://elibro.net/api/editoriales"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/editoriales"</span>
   -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
 
@@ -626,8 +517,8 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Este endpoint devuelve todas las editoriales.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET http://elibro.net/api/editoriales</code></p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET /api/editoriales</code></p>
 <h1 id='contribuidores'>Contribuidores</h1><h2 id='obtener-contribuidores'>Obtener contribuidores</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
@@ -636,7 +527,7 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://elibro.net/api/contribuidores"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/contribuidores"</span>
   -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
 
@@ -674,300 +565,13 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Este endpoint devuelve todos los contribuidores.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET http://elibro.net/api/contribuidores</code></p>
-<h1 id='lector'>Lector</h1><h2 id='colores'>Colores</h2><h3 id='obtener-colores'>Obtener colores</h3><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://elibro.net/api/colores"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>El comando de arriba devuelve un JSON estructurado de la siguiente forma:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-10T16:59:16.647842Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-10T17:00:36.643260Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"basura"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"publicado"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"orden"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"nombre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rojo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hex_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-10T17:00:50.367846Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"basura"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"publicado"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"orden"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"nombre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Violeta"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="p">,</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>Este endpoint devuelve todos los colores.</p>
-<h4 id='http-request-6'>HTTP Request</h4>
-<p><code>GET http://elibro.net/api/colores</code></p>
-<h2 id='sombreados'>Sombreados</h2><h3 id='obtener-sombreados'>Obtener sombreados</h3><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://elibro.net/api/sombreados"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>El comando de arriba devuelve un JSON estructurado de la siguiente forma:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-15T00:11:57.482429Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"basura"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"publicado"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"orden"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"numero_pagina"</span><span class="p">:</span><span class="w"> </span><span class="mi">229</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"bbox"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"x0"</span><span class="p">:</span><span class="w"> </span><span class="mi">352</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"x1"</span><span class="p">:</span><span class="w"> </span><span class="mi">446</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"y0"</span><span class="p">:</span><span class="w"> </span><span class="mi">547</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"y1"</span><span class="p">:</span><span class="w"> </span><span class="mi">576</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"popular"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"baseline"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"x0"</span><span class="p">:</span><span class="w"> </span><span class="mi">352</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"x1"</span><span class="p">:</span><span class="w"> </span><span class="mi">446</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"y0"</span><span class="p">:</span><span class="w"> </span><span class="mi">569</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"y1"</span><span class="p">:</span><span class="w"> </span><span class="mi">569</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"has_baseline"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"bbox"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="err">...</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"baseline"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="err">...</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="err">...</span><span class="p">,</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"texto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"popular se encuentra profundamente arraigado el temor a la oscu- ridad, a la falta de luz."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"usuario"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-10T17:08:04.345498Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"basura"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"publicado"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="p">,</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>Este endpoint devuelve todos los sombreados.</p>
-<h4 id='http-request-7'>HTTP Request</h4>
-<p><code>GET http://elibro.net/api/sombreados</code></p>
-<h2 id='marcadores'>Marcadores</h2><h3 id='obtener-marcadores'>Obtener marcadores</h3><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://elibro.net/api/marcadores"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>El comando de arriba devuelve un JSON estructurado de la siguiente forma:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-08T00:46:55.437564Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"basura"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"publicado"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"orden"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"numero_pagina"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"usuario"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-10T23:38:34.292736Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"basura"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"publicado"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"orden"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"numero_pagina"</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"usuario"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>Este endpoint devuelve todos los marcadores.</p>
-<h4 id='http-request-8'>HTTP Request</h4>
-<p><code>GET http://elibro.net/api/marcadores</code></p>
-<h2 id='anotaciones'>Anotaciones</h2><h3 id='obtener-anotaciones'>Obtener anotaciones</h3><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://elibro.net/api/anotaciones"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>El comando de arriba devuelve un JSON estructurado de la siguiente forma:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-10T23:38:04.346830Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"basura"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"publicado"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"orden"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"texto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hola Rafa!"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"numero_pagina"</span><span class="p">:</span><span class="w"> </span><span class="mi">133</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"usuario"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-18T21:11:50.116815Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"basura"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"publicado"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"orden"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"texto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hola Carlos"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"numero_pagina"</span><span class="p">:</span><span class="w"> </span><span class="mi">97</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"modificado_por"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"usuario"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"titulo"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>Este endpoint devuelve todas las anotaciones.</p>
-<h4 id='http-request-9'>HTTP Request</h4>
-<p><code>GET http://elibro.net/api/anotaciones</code></p>
-<h1 id='usuarios'>Usuarios</h1><h2 id='usuarios-de-la-plataforma'>Usuarios de la plataforma</h2><h3 id='obtener-usuarios'>Obtener usuarios</h3><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://elibro.net/api/users"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>El comando de arriba devuelve un JSON estructurado de la siguiente forma:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cienciahoy2015@gmail.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ana"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"foto"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@admin.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Istrador"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"foto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://elibro-media.s3.amazonaws.com/library_center/profile/2018/02/20180226223200.jpg"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>Este endpoint devuelve todos las usuarios de la plataforma.</p>
-<h4 id='http-request-10'>HTTP Request</h4>
-<p><code>GET http://elibro.net/api/users</code></p>
-<h2 id='usuarios-e-reader'>Usuarios E-Reader</h2><h3 id='obtener-ereaderusers'>Obtener EReaderUsers</h3><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://elibro.net/api/ereaderusers"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>El comando de arriba devuelve un JSON estructurado de la siguiente forma:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="w">
-</span><span class="err">ERROR</span><span class="w"> </span><span class="mi">500</span><span class="err">.</span><span class="w"> </span><span class="err">VER</span><span class="w">
-
-</span></code></pre>
-<p>Este endpoint devuelve todos los usuarios con acceso al lector.</p>
-<h4 id='http-request-11'>HTTP Request</h4>
-<p><code>GET http://elibro.net/api/ereaderusers</code></p>
-<h3 id='crear-usuario-ereaderuser'>Crear usuario EReaderUser</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET /api/contribuidores</code></p>
+<h1 id='usuarios'>Usuarios</h1><h2 id='usuarios-e-reader'>Usuarios E-Reader</h2><h3 id='crear-usuario-ereaderuser'>Crear usuario EReaderUser</h3>
 <p>Usuarios <code>APIUser</code> pueden utilizar la API para crear usuarios de tipo <code>EReaderUser</code> el cual tiene acceso al lector. Para crear un usuario de este tipo, se hace un a request a <code>/api/ereaderusers/</code></p>
-<pre class="highlight plaintext"><code>POST /api/ereaderusers/
 
+<p><code>POST /api/ereaderusers/</code></p>
+<pre class="highlight plaintext"><code>POST /api/ereaderusers/
 {
     "email": "correo@dominio.com",
     "password": "password",
