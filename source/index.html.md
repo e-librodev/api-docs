@@ -235,6 +235,60 @@ Este endpoint devuelve todos los autores.
 `GET /api/autores`
 
 
+## Obtener un autor
+
+```ruby
+require 'kittn'
+
+api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
+api.kittens.get
+```
+
+```python
+import kittn
+
+api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
+api.kittens.get()
+```
+
+```shell
+curl "/api/autores/1"
+  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
+```
+
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
+let kittens = api.kittens.get();
+```
+
+> El comando de arriba devuelve un JSON para el id "1" estructurado de la siguiente forma:
+
+```json
+[
+  {
+    "id": 1,
+    "creado": "2018-02-06T21:58:32.636596Z",
+    "modificado": null,
+    "basura": false,
+    "publicado": true,
+    "orden": 1,
+    "nombre": "Carlos Sáenz Gamasa",
+    "wikipedia": "",
+    "twitter": "",
+    "creado_por": 1,
+    "modificado_por": 1
+  }
+]
+```
+
+Este endpoint devuelve el autor con el id `id`.
+
+### HTTP Request
+
+`GET /api/autores/id` donde `id` es el id del autor
+
 # Editoriales
 
 ## Obtener editoriales
@@ -306,7 +360,7 @@ Este endpoint devuelve todas las editoriales.
 
 # Contribuidores
 
-## Obtener contribuidores
+## Obtener todos los contribuidores
 
 ```ruby
 require 'kittn'
@@ -371,6 +425,129 @@ Este endpoint devuelve todos los contribuidores.
 
 `GET /api/contribuidores`
 
+
+## Obtener un contribuidor específico
+
+```ruby
+require 'kittn'
+
+api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
+api.kittens.get
+```
+
+```python
+import kittn
+
+api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
+api.kittens.get()
+```
+
+```shell
+curl "/api/contribuidores/3"
+  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
+```
+
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
+let kittens = api.kittens.get();
+```
+
+> El comando de arriba devuelve un JSON para el contribuidor con id 3, estructurado de la siguiente forma:
+
+```json
+[
+  {
+    "id": 3,
+    "creado": "2018-02-06T22:50:11.809266Z",
+    "modificado": null,
+    "basura": false,
+    "publicado": true,
+    "orden": 3,
+    "nombre": "Rafael Rubio Núñez",
+    "creado_por": 1,
+    "modificado_por": 1,
+    "rol": 1,
+    "pais": null
+  }
+]
+```
+
+Este endpoint devuelve el contribuidor con id `id`.
+
+### HTTP Request
+
+`GET /api/contribuidores/id`
+
+
+
+## Obtener ciertos contribuidores
+
+```ruby
+require 'kittn'
+
+api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
+api.kittens.get
+```
+
+```python
+import kittn
+
+api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
+api.kittens.get()
+```
+
+```shell
+curl "/api/contribuidores?ids=(2,3)"
+  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
+```
+
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
+let kittens = api.kittens.get();
+```
+
+> El comando de arriba devuelve un JSON para los contribuidores con id 2 y 3, estructurado de la siguiente forma:
+
+```json
+[
+  {
+    "id": 2,
+    "creado": "2018-02-06T22:02:45.864183Z",
+    "modificado": null,
+    "basura": false,
+    "publicado": true,
+    "orden": 2,
+    "nombre": "Nekane Oroz Bretón",
+    "creado_por": 1,
+    "modificado_por": 1,
+    "rol": 1,
+    "pais": null
+  },
+  {
+    "id": 3,
+    "creado": "2018-02-06T22:50:11.809266Z",
+    "modificado": null,
+    "basura": false,
+    "publicado": true,
+    "orden": 3,
+    "nombre": "Rafael Rubio Núñez",
+    "creado_por": 1,
+    "modificado_por": 1,
+    "rol": 1,
+    "pais": null
+  }
+]
+```
+
+Este endpoint devuelve el conjunto de contribuidores con ids `(id1, id2, ..., idN)`.
+
+### HTTP Request
+
+`GET /api/contribuidores/(id1, id2, ..., idN)`
 
 # Usuarios
 
