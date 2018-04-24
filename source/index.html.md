@@ -3,7 +3,6 @@ title: e-Libro API Docs
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
   - python
   - javascript
 
@@ -30,12 +29,6 @@ Para poder interactuar con nuestra API necesita agregar un token al header de ca
 Este token es provisto por e-Libro. Usted puede [solicitar su token](#)
 
 > Para autorizar, use el siguiente código:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-```
 
 ```python
 import kittn
@@ -65,13 +58,6 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 
 ## Obtener títulos
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
-
 ```python
 import kittn
 
@@ -85,10 +71,8 @@ curl "/api/titulos"
 ```
 
 ```javascript
-const kittn = require('kittn');
 
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
+
 ```
 
 > El comando de arriba devuelve un JSON estructurado de la siguiente forma:
@@ -173,13 +157,6 @@ HTTP Request | Descripción
 
 ## Obtener autores
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
-
 ```python
 import kittn
 
@@ -237,13 +214,6 @@ Este endpoint devuelve todos los autores.
 
 ## Obtener un autor
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
-
 ```python
 import kittn
 
@@ -292,13 +262,6 @@ Este endpoint devuelve el autor con el id `id`.
 # Editoriales
 
 ## Obtener editoriales
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
 
 ```python
 import kittn
@@ -362,13 +325,6 @@ Este endpoint devuelve todas las editoriales.
 
 ## Obtener todos los contribuidores
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
-
 ```python
 import kittn
 
@@ -428,13 +384,6 @@ Este endpoint devuelve todos los contribuidores.
 
 ## Obtener un contribuidor específico
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
-
 ```python
 import kittn
 
@@ -483,13 +432,6 @@ Este endpoint devuelve el contribuidor con id `id`.
 
 
 ## Obtener ciertos contribuidores
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get
-```
 
 ```python
 import kittn
