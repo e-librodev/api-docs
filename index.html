@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,7 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
               <a href="#" data-language-name="python">python</a>
               <a href="#" data-language-name="javascript">javascript</a>
         </div>
@@ -299,10 +298,7 @@
 <blockquote>
 <p>Para autorizar, use el siguiente código:</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
 </code></pre><pre class="highlight shell tab-shell"><code><span class="c"># Con la consola, usted puede pasar el header correcto con cada request</span>
@@ -319,20 +315,14 @@ curl <span class="s2">"api_endpoint_here"</span>
 <aside class="notice">
 Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con tu token personal.
 </aside>
-<h1 id='titulos'>Títulos</h1><h2 id='obtener-titulos'>Obtener títulos</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h1 id='titulos'>Títulos</h1><h2 id='obtener-titulos'>Obtener títulos</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 </code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/titulos"</span>
   -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
 </code></pre>
 <blockquote>
 <p>El comando de arriba devuelve un JSON estructurado de la siguiente forma:</p>
@@ -433,11 +423,7 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 <td>Devuelve todas las monografías</td>
 </tr>
 </tbody></table>
-<h1 id='autores'>Autores</h1><h2 id='obtener-autores'>Obtener autores</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h1 id='autores'>Autores</h1><h2 id='obtener-autores'>Obtener autores</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -479,11 +465,7 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 <p>Este endpoint devuelve todos los autores.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET /api/autores</code></p>
-<h2 id='obtener-un-autor'>Obtener un autor</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h2 id='obtener-un-autor'>Obtener un autor</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -516,11 +498,7 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 <p>Este endpoint devuelve el autor con el id <code>id</code>.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET /api/autores/id</code> donde <code>id</code> es el id del autor</p>
-<h1 id='editoriales'>Editoriales</h1><h2 id='obtener-editoriales'>Obtener editoriales</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h1 id='editoriales'>Editoriales</h1><h2 id='obtener-editoriales'>Obtener editoriales</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -565,11 +543,7 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 <p>Este endpoint devuelve todas las editoriales.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET /api/editoriales</code></p>
-<h1 id='contribuidores'>Contribuidores</h1><h2 id='obtener-todos-los-contribuidores'>Obtener todos los contribuidores</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h1 id='contribuidores'>Contribuidores</h1><h2 id='obtener-todos-los-contribuidores'>Obtener todos los contribuidores</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -613,11 +587,7 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 <p>Este endpoint devuelve todos los contribuidores.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET /api/contribuidores</code></p>
-<h2 id='obtener-un-contribuidor-especifico'>Obtener un contribuidor específico</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h2 id='obtener-un-contribuidor-especifico'>Obtener un contribuidor específico</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -650,11 +620,7 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 <p>Este endpoint devuelve el contribuidor con id <code>id</code>.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET /api/contribuidores/id</code></p>
-<h2 id='obtener-ciertos-contribuidores'>Obtener ciertos contribuidores</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h2 id='obtener-ciertos-contribuidores'>Obtener ciertos contribuidores</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
 <span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -775,7 +741,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
                 <a href="#" data-language-name="python">python</a>
                 <a href="#" data-language-name="javascript">javascript</a>
           </div>
