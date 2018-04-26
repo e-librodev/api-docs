@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;python&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,7 +211,6 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="python">python</a>
               <a href="#" data-language-name="javascript">javascript</a>
         </div>
@@ -241,7 +240,7 @@
                     <a href="#obtener-autores" class="toc-h2 toc-link" data-title="obtener-autores">Obtener autores</a>
                   </li>
                   <li>
-                    <a href="#obtener-un-autor" class="toc-h2 toc-link" data-title="obtener-un-autor">Obtener un autor</a>
+                    <a href="#obtener-un-autor-especifico" class="toc-h2 toc-link" data-title="obtener-un-autor-especifico">Obtener un autor específico</a>
                   </li>
               </ul>
           </li>
@@ -249,7 +248,7 @@
             <a href="#editoriales" class="toc-h1 toc-link" data-title="editoriales">Editoriales</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#obtener-editoriales" class="toc-h2 toc-link" data-title="obtener-editoriales">Obtener editoriales</a>
+                    <a href="#obtener-todas-las-editoriales" class="toc-h2 toc-link" data-title="obtener-todas-las-editoriales">Obtener todas las editoriales</a>
                   </li>
               </ul>
           </li>
@@ -295,34 +294,61 @@
 
 <p>Este token es provisto por e-Libro. Usted puede <a href="#">solicitar su token</a></p>
 
-<blockquote>
-<p>Para autorizar, use el siguiente código:</p>
-</blockquote>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<!-- > Para autorizar, use el siguiente código:
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># Con la consola, usted puede pasar el header correcto con cada request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+```python
+import kittn
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Asegurese de reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con su token.</p>
-</blockquote>
+api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
+```
+
+```shell
+# Con la consola, usted puede pasar el header correcto con cada request
+curl "api_endpoint_here"
+  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
+```
+
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
+```
+
+> Asegurese de reemplazar `Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb` con su token. -->
 
 <aside class="notice">
 Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con tu token personal.
 </aside>
-<h1 id='titulos'>Títulos</h1><h2 id='obtener-titulos'>Obtener títulos</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h1 id='titulos'>Títulos</h1><h2 id='obtener-titulos'>Obtener títulos</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/titulos"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'/api/titulos'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">}</span>
 
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="c"># Trabajar con el JSON response data</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">e</span>
+    <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">got</span>
+
+<span class="kr">const</span> <span class="nx">got</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'got'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">got</span><span class="p">(</span><span class="s1">'/api/titulos'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+    <span class="c1">// Trabajar el JSON response</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})();</span>
 </code></pre>
 <blockquote>
 <p>El comando de arriba devuelve un JSON estructurado de la siguiente forma:</p>
@@ -423,16 +449,36 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 <td>Devuelve todas las monografías</td>
 </tr>
 </tbody></table>
-<h1 id='autores'>Autores</h1><h2 id='obtener-autores'>Obtener autores</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h1 id='autores'>Autores</h1><h2 id='obtener-autores'>Obtener autores</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/autores"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'/api/autores'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">}</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="c"># Trabajar con el JSON response data</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">e</span>
+    <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">got</span>
+
+<span class="kr">const</span> <span class="nx">got</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'got'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">got</span><span class="p">(</span><span class="s1">'/api/autores'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+    <span class="c1">// Trabajar el JSON response</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})();</span>
 </code></pre>
 <blockquote>
 <p>El comando de arriba devuelve un JSON estructurado de la siguiente forma:</p>
@@ -465,16 +511,36 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 <p>Este endpoint devuelve todos los autores.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET /api/autores</code></p>
-<h2 id='obtener-un-autor'>Obtener un autor</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h2 id='obtener-un-autor-especifico'>Obtener un autor específico</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/autores/1"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'/api/autores/1'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">}</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="c"># Trabajar con el JSON response data</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">e</span>
+    <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">got</span>
+
+<span class="kr">const</span> <span class="nx">got</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'got'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">got</span><span class="p">(</span><span class="s1">'/api/autores/1'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+    <span class="c1">// Trabajar el response</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})();</span>
 </code></pre>
 <blockquote>
 <p>El comando de arriba devuelve un JSON para el id &quot;1&quot; estructurado de la siguiente forma:</p>
@@ -495,19 +561,51 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>Este endpoint devuelve el autor con el id <code>id</code>.</p>
+<p>Este endpoint devuelve el autor cuyo id es igual a <code>id</code>.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET /api/autores/id</code> donde <code>id</code> es el id del autor</p>
-<h1 id='editoriales'>Editoriales</h1><h2 id='obtener-editoriales'>Obtener editoriales</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p><code>GET /api/autores/{id}</code></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/editoriales"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>El id del autor</td>
+</tr>
+</tbody></table>
+<h1 id='editoriales'>Editoriales</h1><h2 id='obtener-todas-las-editoriales'>Obtener todas las editoriales</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'/api/editoriales'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">}</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="c"># Trabajar con el JSON response data</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">e</span>
+    <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">got</span>
+
+<span class="kr">const</span> <span class="nx">got</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'got'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">got</span><span class="p">(</span><span class="s1">'/api/editoriales'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+    <span class="c1">// Trabajar el JSON response</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})();</span>
 </code></pre>
 <blockquote>
 <p>El comando de arriba devuelve un JSON estructurado de la siguiente forma:</p>
@@ -543,16 +641,36 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 <p>Este endpoint devuelve todas las editoriales.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET /api/editoriales</code></p>
-<h1 id='contribuidores'>Contribuidores</h1><h2 id='obtener-todos-los-contribuidores'>Obtener todos los contribuidores</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h1 id='contribuidores'>Contribuidores</h1><h2 id='obtener-todos-los-contribuidores'>Obtener todos los contribuidores</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/contribuidores"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'/api/contribuidores'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">}</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="c"># Trabajar con el JSON response data</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">e</span>
+    <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">got</span>
+
+<span class="kr">const</span> <span class="nx">got</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'got'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">got</span><span class="p">(</span><span class="s1">'/api/contribuidores'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+    <span class="c1">// Trabajar el JSON response</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})();</span>
 </code></pre>
 <blockquote>
 <p>El comando de arriba devuelve un JSON estructurado de la siguiente forma:</p>
@@ -587,16 +705,36 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 <p>Este endpoint devuelve todos los contribuidores.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET /api/contribuidores</code></p>
-<h2 id='obtener-un-contribuidor-especifico'>Obtener un contribuidor específico</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h2 id='obtener-un-contribuidor-especifico'>Obtener un contribuidor específico</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/contribuidores/3"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'/api/contribuidores/3'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">}</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="c"># Trabajar con el JSON response data</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">e</span>
+    <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">got</span>
+
+<span class="kr">const</span> <span class="nx">got</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'got'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">got</span><span class="p">(</span><span class="s1">'/api/contribuidores/3'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+    <span class="c1">// Trabajar el JSON response</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})();</span>
 </code></pre>
 <blockquote>
 <p>El comando de arriba devuelve un JSON para el contribuidor con id 3, estructurado de la siguiente forma:</p>
@@ -617,19 +755,51 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>Este endpoint devuelve el contribuidor con id <code>id</code>.</p>
+<p>Este endpoint devuelve el contribuidor cuyo id es <code>id</code>.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET /api/contribuidores/id</code></p>
-<h2 id='obtener-ciertos-contribuidores'>Obtener ciertos contribuidores</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p><code>GET /api/contribuidores/{id}</code></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"/api/contribuidores?ids=(2,3)"</span>
-  -H <span class="s2">"Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<table><thead>
+<tr>
+<th>Parámetro</th>
+<th>Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>El id del contribuidor</td>
+</tr>
+</tbody></table>
+<h2 id='obtener-ciertos-contribuidores'>Obtener ciertos contribuidores</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'/api/contribuidores?ids=(2,3)'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">}</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="c"># Trabajar con el JSON response data</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">e</span>
+    <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">got</span>
+
+<span class="kr">const</span> <span class="nx">got</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'got'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">got</span><span class="p">(</span><span class="s1">'/api/contribuidores?ids=(2,3)'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+    <span class="c1">// Trabajar el JSON response</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})();</span>
 </code></pre>
 <blockquote>
 <p>El comando de arriba devuelve un JSON para los contribuidores con id 2 y 3, estructurado de la siguiente forma:</p>
@@ -663,19 +833,51 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>Este endpoint devuelve el conjunto de contribuidores con ids <code>(id1, id2, ..., idN)</code>.</p>
+<p>Este endpoint devuelve el conjunto de contribuidores cuyos ids son <code>(id1, id2, ..., idN)</code>.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET /api/contribuidores?ids=(id1, id2, ..., idN)</code></p>
 <h1 id='usuarios'>Usuarios</h1><h2 id='usuarios-e-reader'>Usuarios E-Reader</h2><h3 id='crear-usuario-ereaderuser'>Crear usuario EReaderUser</h3>
 <p>Usuarios <code>APIUser</code> pueden utilizar la API para crear usuarios de tipo <code>EReaderUser</code> el cual tiene acceso al lector. Para crear un usuario de este tipo, se hace un a request a <code>/api/ereaderusers/</code></p>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
-<p><code>POST /api/ereaderusers/</code></p>
-<pre class="highlight plaintext"><code>POST /api/ereaderusers/
-{
-    "email": "correo@dominio.com",
-    "password": "password",
-    "company": "mycompany"
-}
+<span class="n">url</span> <span class="o">=</span> <span class="s">'/api/ereaderusers/'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span><span class="p">}</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'email'</span><span class="p">:</span> <span class="s">'correo@dominio.com'</span><span class="p">,</span>
+    <span class="s">'password'</span><span class="p">:</span> <span class="s">'password'</span><span class="p">,</span>
+    <span class="s">'company'</span><span class="p">:</span> <span class="s">'mycompany'</span>
+<span class="p">}</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="c"># Trabajar con el JSON response data</span>
+<span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">e</span>
+    <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">npm</span> <span class="nx">install</span> <span class="nx">got</span>
+
+<span class="kr">const</span> <span class="nx">got</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'got'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">json</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'Authorization'</span><span class="p">:</span> <span class="s1">'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span>
+    <span class="s1">'email'</span><span class="p">:</span> <span class="s1">'correo@dominio.com'</span><span class="p">,</span>
+    <span class="s1">'password'</span><span class="p">:</span> <span class="s1">'password'</span><span class="p">,</span>
+    <span class="s1">'company'</span><span class="p">:</span> <span class="s1">'mycompany'</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">got</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">'/api/ereaderusers/'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+    <span class="c1">// Usuario creado</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})();</span>
 </code></pre>
 <p>El valor de company debe ser el nombre de la compañia asociada al APIUser que esta haciendo la request.</p>
 <h1 id='errors'>Errors</h1>
@@ -740,7 +942,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
                 <a href="#" data-language-name="python">python</a>
                 <a href="#" data-language-name="javascript">javascript</a>
           </div>
