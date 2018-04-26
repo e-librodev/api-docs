@@ -2,7 +2,6 @@
 title: e-Libro API Docs
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
   - python
   - javascript
 
@@ -28,7 +27,7 @@ Para poder interactuar con nuestra API necesita agregar un token al header de ca
 
 Este token es provisto por e-Libro. Usted puede [solicitar su token](#)
 
-> Para autorizar, use el siguiente código:
+<!-- > Para autorizar, use el siguiente código:
 
 ```python
 import kittn
@@ -48,7 +47,7 @@ const kittn = require('kittn');
 let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
 ```
 
-> Asegurese de reemplazar `Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb` con su token.
+> Asegurese de reemplazar `Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb` con su token. -->
 
 <aside class="notice">
 Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con tu token personal.
@@ -59,20 +58,39 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 ## Obtener títulos
 
 ```python
-import kittn
+import requests
+import json
 
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
+url = '/api/titulos'
+headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
-```shell
-curl "/api/titulos"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
+try:
+    r = requests.get(url, headers=headers)
+    data = r.json()
+    # Trabajar con el JSON response data
+except requests.exceptions.RequestException as e:
+    print e
+    sys.exit(1)
 ```
 
 ```javascript
+npm install got
 
-
+const got = require('got');
+var options = {
+  json: true,
+  headers: {
+    'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'
+  },
+};
+(async () => {
+  try {
+    const response = await got('/api/titulos', options);
+    // Trabajar el JSON response
+  } catch (error) {
+    console.log(error.response.body);
+  }
+})();
 ```
 
 > El comando de arriba devuelve un JSON estructurado de la siguiente forma:
@@ -158,22 +176,39 @@ HTTP Request | Descripción
 ## Obtener autores
 
 ```python
-import kittn
+import requests
+import json
 
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
+url = '/api/autores'
+headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
-```shell
-curl "/api/autores"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
+try:
+    r = requests.get(url, headers=headers)
+    data = r.json()
+    # Trabajar con el JSON response data
+except requests.exceptions.RequestException as e:
+    print e
+    sys.exit(1)
 ```
 
 ```javascript
-const kittn = require('kittn');
+npm install got
 
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
+const got = require('got');
+var options = {
+  json: true,
+  headers: {
+    'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'
+  },
+};
+(async () => {
+  try {
+    const response = await got('/api/autores', options);
+    // Trabajar el JSON response
+  } catch (error) {
+    console.log(error.response.body);
+  }
+})();
 ```
 
 > El comando de arriba devuelve un JSON estructurado de la siguiente forma:
@@ -212,25 +247,42 @@ Este endpoint devuelve todos los autores.
 `GET /api/autores`
 
 
-## Obtener un autor
+## Obtener un autor específico
 
 ```python
-import kittn
+import requests
+import json
 
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
+url = '/api/autores/1'
+headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
-```shell
-curl "/api/autores/1"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
+try:
+    r = requests.get(url, headers=headers)
+    data = r.json()
+    # Trabajar con el JSON response data
+except requests.exceptions.RequestException as e:
+    print e
+    sys.exit(1)
 ```
 
 ```javascript
-const kittn = require('kittn');
+npm install got
 
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
+const got = require('got');
+var options = {
+  json: true,
+  headers: {
+    'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'
+  },
+};
+(async () => {
+  try {
+    const response = await got('/api/autores/1', options);
+    // Trabajar el response
+  } catch (error) {
+    console.log(error.response.body);
+  }
+})();
 ```
 
 > El comando de arriba devuelve un JSON para el id "1" estructurado de la siguiente forma:
@@ -253,33 +305,54 @@ let kittens = api.kittens.get();
 ]
 ```
 
-Este endpoint devuelve el autor con el id `id`.
+Este endpoint devuelve el autor cuyo id es igual a `id`.
 
 ### HTTP Request
 
-`GET /api/autores/id` donde `id` es el id del autor
+`GET /api/autores/{id}`
+
+Parámetro | Descripción
+--------- | --------------
+id | El id del autor
 
 # Editoriales
 
-## Obtener editoriales
+## Obtener todas las editoriales
 
 ```python
-import kittn
+import requests
+import json
 
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
+url = '/api/editoriales'
+headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
-```shell
-curl "/api/editoriales"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
+try:
+    r = requests.get(url, headers=headers)
+    data = r.json()
+    # Trabajar con el JSON response data
+except requests.exceptions.RequestException as e:
+    print e
+    sys.exit(1)
 ```
 
 ```javascript
-const kittn = require('kittn');
+npm install got
 
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
+const got = require('got');
+var options = {
+  json: true,
+  headers: {
+    'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'
+  },
+};
+(async () => {
+  try {
+    const response = await got('/api/editoriales', options);
+    // Trabajar el JSON response
+  } catch (error) {
+    console.log(error.response.body);
+  }
+})();
 ```
 
 > El comando de arriba devuelve un JSON estructurado de la siguiente forma:
@@ -326,22 +399,39 @@ Este endpoint devuelve todas las editoriales.
 ## Obtener todos los contribuidores
 
 ```python
-import kittn
+import requests
+import json
 
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
+url = '/api/contribuidores'
+headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
-```shell
-curl "/api/contribuidores"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
+try:
+    r = requests.get(url, headers=headers)
+    data = r.json()
+    # Trabajar con el JSON response data
+except requests.exceptions.RequestException as e:
+    print e
+    sys.exit(1)
 ```
 
 ```javascript
-const kittn = require('kittn');
+npm install got
 
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
+const got = require('got');
+var options = {
+  json: true,
+  headers: {
+    'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'
+  },
+};
+(async () => {
+  try {
+    const response = await got('/api/contribuidores', options);
+    // Trabajar el JSON response
+  } catch (error) {
+    console.log(error.response.body);
+  }
+})();
 ```
 
 > El comando de arriba devuelve un JSON estructurado de la siguiente forma:
@@ -385,22 +475,39 @@ Este endpoint devuelve todos los contribuidores.
 ## Obtener un contribuidor específico
 
 ```python
-import kittn
+import requests
+import json
 
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
+url = '/api/contribuidores/3'
+headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
-```shell
-curl "/api/contribuidores/3"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
+try:
+    r = requests.get(url, headers=headers)
+    data = r.json()
+    # Trabajar con el JSON response data
+except requests.exceptions.RequestException as e:
+    print e
+    sys.exit(1)
 ```
 
 ```javascript
-const kittn = require('kittn');
+npm install got
 
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
+const got = require('got');
+var options = {
+  json: true,
+  headers: {
+    'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'
+  },
+};
+(async () => {
+  try {
+    const response = await got('/api/contribuidores/3', options);
+    // Trabajar el JSON response
+  } catch (error) {
+    console.log(error.response.body);
+  }
+})();
 ```
 
 > El comando de arriba devuelve un JSON para el contribuidor con id 3, estructurado de la siguiente forma:
@@ -423,33 +530,53 @@ let kittens = api.kittens.get();
 ]
 ```
 
-Este endpoint devuelve el contribuidor con id `id`.
+Este endpoint devuelve el contribuidor cuyo id es `id`.
 
 ### HTTP Request
 
-`GET /api/contribuidores/id`
+`GET /api/contribuidores/{id}`
 
+Parámetro | Descripción
+--------- | --------------
+id | El id del contribuidor
 
 
 ## Obtener ciertos contribuidores
 
 ```python
-import kittn
+import requests
+import json
 
-api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb')
-api.kittens.get()
-```
+url = '/api/contribuidores?ids=(2,3)'
+headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
-```shell
-curl "/api/contribuidores?ids=(2,3)"
-  -H "Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb"
+try:
+    r = requests.get(url, headers=headers)
+    data = r.json()
+    # Trabajar con el JSON response data
+except requests.exceptions.RequestException as e:
+    print e
+    sys.exit(1)
 ```
 
 ```javascript
-const kittn = require('kittn');
+npm install got
 
-let api = kittn.authorize('Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb');
-let kittens = api.kittens.get();
+const got = require('got');
+var options = {
+  json: true,
+  headers: {
+    'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'
+  },
+};
+(async () => {
+  try {
+    const response = await got('/api/contribuidores?ids=(2,3)', options);
+    // Trabajar el JSON response
+  } catch (error) {
+    console.log(error.response.body);
+  }
+})();
 ```
 
 > El comando de arriba devuelve un JSON para los contribuidores con id 2 y 3, estructurado de la siguiente forma:
@@ -485,7 +612,7 @@ let kittens = api.kittens.get();
 ]
 ```
 
-Este endpoint devuelve el conjunto de contribuidores con ids `(id1, id2, ..., idN)`.
+Este endpoint devuelve el conjunto de contribuidores cuyos ids son `(id1, id2, ..., idN)`.
 
 ### HTTP Request
 
@@ -499,16 +626,50 @@ Este endpoint devuelve el conjunto de contribuidores con ids `(id1, id2, ..., id
 
 Usuarios `APIUser` pueden utilizar la API para crear usuarios de tipo `EReaderUser` el cual tiene acceso al lector. Para crear un usuario de este tipo, se hace un a request a `/api/ereaderusers/`
 
-`POST /api/ereaderusers/`
+```python
+import requests
+import json
 
-```
-POST /api/ereaderusers/
-{
-    "email": "correo@dominio.com",
-    "password": "password",
-    "company": "mycompany"
+url = '/api/ereaderusers/'
+headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
+data = {
+    'email': 'correo@dominio.com',
+    'password': 'password',
+    'company': 'mycompany'
 }
+
+try:
+    r = requests.get(url, data = data, headers=headers)
+    data = r.json()
+    # Trabajar con el JSON response data
+except requests.exceptions.RequestException as e:
+    print e
+    sys.exit(1)
+```
+
+```javascript
+npm install got
+
+const got = require('got');
+var options = {
+  json: true,
+  headers: {
+    'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'
+  },
+  body:
+    'email': 'correo@dominio.com',
+    'password': 'password',
+    'company': 'mycompany'
+  }
+};
+(async () => {
+  try {
+    const response = await got.post('/api/ereaderusers/', options);
+    // Usuario creado
+  } catch (error) {
+    console.log(error.response.body);
+  }
+})();
 ```
 
 El valor de company debe ser el nombre de la compañia asociada al APIUser que esta haciendo la request.
-
