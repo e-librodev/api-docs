@@ -61,7 +61,7 @@ Debe reemplazar <code>Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb</code> con 
 import requests
 import json
 
-url = '/api/titulos'
+url = '/api/titles'
 headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
 try:
@@ -85,7 +85,7 @@ var options = {
 };
 (async () => {
   try {
-    const response = await got('/api/titulos', options);
+    const response = await got('/api/titles', options);
     // Trabajar el JSON response
   } catch (error) {
     console.log(error.response.body);
@@ -97,78 +97,123 @@ var options = {
 
 ```json
 [
-  {
-    "id": 6,
-    "creado": "2018-03-05T19:51:42.839641Z",
-    "modificado": null,
-    "publicado": true,
-    "id_elibro": "2b9e9c59-9b73-496a-b7fa-3f33185f4206",
-    "drm": false,
-    "titulo": "Crimen y castigo. Tomo II",
-    "subtitulo": "",
-    "precio": "52.10",
-    "precio_mupo": "0.00",
-    "precio_supo": "0.00",
-    "isbn": "9781449234782",
-    "e_isbn": "",
-    "otro_id": "",
-    "volumen": null,
-    "edicion": null,
-    "fecha_entrega": "2014-04-06",
-    "fecha_publicacion": "2018-03-05",
-    "numero_copias": null,
-    "numero_paginas": 521,
-    "portada": null,
-    "resumen": "",
-    "descripcion": "",
-    "ano_edicion": "2014",
-    "toc": null,
-    "creado_por": 3,
-    "modificado_por": 3,
-    "audiencia": null,
-    "materia": 6,
-    "tipo_drm": null,
-    "idioma": 8,
-    "bisac_primario": 6,
-    "bisac_secundario": null,
-    "clasificacion": null,
-    "derecho": null,
-    "autor": 4,
-    "imprenta": null,
-    "moneda": 5,
-    "pais": 11,
-    "editorial": 18,
-    "colecciones": [
-      14
-    ],
-    "contribuidores": [
-      4
-    ]
-  },
-  {
-    "id": 6,
-    "creado": "2018-03-05T19:51:42.839641Z",
-    "modificado": null,
-    "publicado": true,
-    ...,
-    ...,
-  }
+    {
+        "isbn": "9788497478083",
+        "created": "2018-07-19T23:54:06.045417Z",
+        "modified": "2018-07-23T23:59:53.486141Z",
+        "publish": false,
+        "cdu_code": "",
+        "classification_date": null,
+        "cover": null,
+        "delivery_date": null,
+        "description": "",
+        "dewey_code": "",
+        "drm": false,
+        "e_isbn": "",
+        "edition": 1,
+        "edition_year": "2017",
+        "has_audio": false,
+        "has_mrc": false,
+        "issn": null,
+        "lcc_code": "",
+        "mupo_price": "4.08",
+        "other_id": "",
+        "p_isbn": "",
+        "pages": 146,
+        "publication_date": null,
+        "status": "INGRESADO",
+        "summary": "",
+        "subtitle": "",
+        "supo_price": "2.72",
+        "title_name": "Apuntes de geometría diferencial de curvas y superficies",
+        "toc": [
+            {
+                "title": "APUNTES DE GEOMETRÍA DIFERENCIAL DE CURVAS (...)",
+                "subitems": [
+                    {
+                        "title": "PÁGINA LEGAL",
+                        "page_number": 4
+                    },
+                    {
+                        "title": "ÍNDICE GENERAL",
+                        "page_number": 5
+                    },
+                    {
+                        "title": "INTRODUCCIÓN",
+                        "page_number": 7
+                    },
+                    {
+                        "title": "1. CURVAS PLANAS",
+                        "subitems": [
+                            {
+                                "title": "1.1. CURVAS PARAMETRIZADAS Y REGULARES",
+                                "page_number": 10
+                            },
+                            {
+                                ...,
+                            },
+                            ...,
+                        ],
+                        "page_number": 9
+                    },
+                    {
+                        ...,
+                    }
+                ],
+                "page_number": 1
+            }
+        ],
+        "volume": null,
+        "verification_date": null,
+        "created_by": 12,
+        "modified_by": null,
+        "audience": null,
+        "author": 13,
+        "author_right": null,
+        "classification": null,
+        "classification_user": null,
+        "country": null,
+        "currency": 5,
+        "drm_type": null,
+        "language": 8,
+        "press": null,
+        "primary_bisac": 16,
+        "publisher": 38,
+        "secundary_bisac": null,
+        "subject": 11,
+        "verification_user": null,
+        "collections": [
+            37,
+            39,
+            43
+        ],
+        "contributors": [],
+        "theme": []
+    },
+    {
+        "isbn": "9788490421987",
+        "created": "2018-08-01T19:11:16.342502Z",
+        "modified": "2018-08-01T19:11:16.365160Z",
+        ...,
+    },
+    ...
 ]
+
 ```
 
-Este endpoint devuelve todos los títulos (libros, revistas, tesis, manuales, artículos y monografías). Puede reemplazar `titulos` por `libros`, `revistas`, `tesis`, `manuales`, `articulos` o `monografias` para obtener todos los títulos de un tipo específico.
+Este endpoint devuelve todos los títulos (libros, revistas, tesis, manuales, artículos y monografías). Puede reemplazar `titles` por `books`, `magazines`, `thesis`, `manuals`, `articles` o `monographies` para obtener todos los títulos de un tipo específico.
 
 ### HTTP Request
 
 HTTP Request | Descripción
 --------- | -------
-`GET /api/titulos` | Devuelve todos los títulos
-`GET /api/libros` | Devuelve todos los libros
-`GET /api/revistas` | Devuelve todas las revistas
-`GET /api/tesis` | Devuelve todas las tesis
-`GET /api/manuales` | Devuelve todos los manuales
-`GET /api/articulos` | Devuelve todos los artículos
-`GET /api/monografias` | Devuelve todas las monografías
+`GET /api/titles` | Devuelve todos los títulos
+`GET /api/books` | Devuelve todos los libros
+`GET /api/magazines` | Devuelve todas las revistas
+`GET /api/thesis` | Devuelve todas las tesis
+`GET /api/manuals` | Devuelve todos los manuales
+`GET /api/articles` | Devuelve todos los artículos
+`GET /api/monographies` | Devuelve todas las monografías
 
 
 # Autores
@@ -179,7 +224,7 @@ HTTP Request | Descripción
 import requests
 import json
 
-url = '/api/autores'
+url = '/api/authors'
 headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
 try:
@@ -203,7 +248,7 @@ var options = {
 };
 (async () => {
   try {
-    const response = await got('/api/autores', options);
+    const response = await got('/api/authors', options);
     // Trabajar el JSON response
   } catch (error) {
     console.log(error.response.body);
@@ -215,28 +260,28 @@ var options = {
 
 ```json
 [
-  {
-    "id": 1,
-    "creado": "2018-02-06T21:58:32.636596Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": true,
-    "orden": 1,
-    "nombre": "Carlos Sáenz Gamasa",
-    "wikipedia": "",
-    "twitter": "",
-    "creado_por": 1,
-    "modificado_por": 1
-  },
-  {
-    "id": 2,
-    "creado": "2018-02-06T22:35:49.163085Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": true,
-    ...,
-    ...,
-  }
+    {
+        "id": 1,
+        "created": "2018-06-25T21:56:52.299914Z",
+        "modified": null,
+        "trash": false,
+        "publish": true,
+        "order": 0,
+        "name": "ABIÁN BENTOR SOCORRO LERÁNOZ",
+        "wikipedia": "",
+        "twitter": "",
+        "created_by": null,
+        "modified_by": null
+    },
+    {
+        "id": 3,
+        "created": "2018-07-18T19:58:24.309931Z",
+        "modified": null,
+        "trash": false,
+        "publish": true,
+        ...,
+    },
+    ...
 ]
 ```
 
@@ -244,7 +289,7 @@ Este endpoint devuelve todos los autores.
 
 ### HTTP Request
 
-`GET /api/autores`
+`GET /api/authors`
 
 
 ## Obtener un autor específico
@@ -253,7 +298,7 @@ Este endpoint devuelve todos los autores.
 import requests
 import json
 
-url = '/api/autores/1'
+url = '/api/authors/1'
 headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
 try:
@@ -277,7 +322,7 @@ var options = {
 };
 (async () => {
   try {
-    const response = await got('/api/autores/1', options);
+    const response = await got('/api/authors/1', options);
     // Trabajar el response
   } catch (error) {
     console.log(error.response.body);
@@ -288,28 +333,26 @@ var options = {
 > El comando de arriba devuelve un JSON para el id "1" estructurado de la siguiente forma:
 
 ```json
-[
-  {
+{
     "id": 1,
-    "creado": "2018-02-06T21:58:32.636596Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": true,
-    "orden": 1,
-    "nombre": "Carlos Sáenz Gamasa",
+    "created": "2018-06-25T21:56:52.299914Z",
+    "modified": null,
+    "trash": false,
+    "publish": true,
+    "order": 0,
+    "name": "ABIÁN BENTOR SOCORRO LERÁNOZ",
     "wikipedia": "",
     "twitter": "",
-    "creado_por": 1,
-    "modificado_por": 1
-  }
-]
+    "created_by": null,
+    "modified_by": null
+}
 ```
 
 Este endpoint devuelve el autor cuyo id es igual a `id`.
 
 ### HTTP Request
 
-`GET /api/autores/{id}`
+`GET /api/authors/{id}`
 
 Parámetro | Descripción
 --------- | --------------
@@ -323,7 +366,7 @@ id | El id del autor
 import requests
 import json
 
-url = '/api/editoriales'
+url = '/api/publishers'
 headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
 try:
@@ -347,7 +390,7 @@ var options = {
 };
 (async () => {
   try {
-    const response = await got('/api/editoriales', options);
+    const response = await got('/api/publishers', options);
     // Trabajar el JSON response
   } catch (error) {
     console.log(error.response.body);
@@ -359,31 +402,31 @@ var options = {
 
 ```json
 [
-  {
-    "id": 4,
-    "creado": "2018-02-23T21:40:12.805870Z",
-    "modificado": "2018-03-02T02:48:13.419902Z",
-    "basura": false,
-    "publicado": true,
-    "orden": 1,
-    "nombre": "Editorial UOC",
-    "url": "http://www.editorialuoc.cat/",
-    "direccion": "Rambla del Poblenou, núm. 156\r\n08018 Barcelona",
-    "telefono_principal": "93 486 39 40",
-    "logo": null,
-    "creado_por": 1,
-    "modificado_por": 1,
-    "pais": 213
-  },
-  {
-    "id": 5,
-    "creado": "2018-03-02T02:43:53.904328Z",
-    "modificado": "2018-03-02T02:48:21.386334Z",
-    "basura": false,
-    "publicado": true,
-    ...,
-    ...,
-  }
+    {
+        "id": 29,
+        "created": "2018-07-18T19:45:33.119216Z",
+        "modified": "2018-07-18T20:02:50.145842Z",
+        "trash": false,
+        "publish": true,
+        "order": 0,
+        "name": "Servicio de Publicaciones. Universidad de Alcalá",
+        "url": "http://publicaciones.uah.es/",
+        "address": "Pza. San diego, s/n - 28801 Alcalá de Henares (Madrid)",
+        "main_phone": "+34918854066",
+        "logo": null,
+        "created_by": 12,
+        "modified_by": 12,
+        "country": 213
+    },
+    {
+        "id": 31,
+        "created": "2018-07-18T20:14:10.305888Z",
+        "modified": null,
+        "trash": false,
+        "publish": true,
+        ...,
+    },
+    ...
 ]
 ```
 
@@ -391,7 +434,7 @@ Este endpoint devuelve todas las editoriales.
 
 ### HTTP Request
 
-`GET /api/editoriales`
+`GET /api/publishers`
 
 
 # Contribuidores
@@ -402,7 +445,7 @@ Este endpoint devuelve todas las editoriales.
 import requests
 import json
 
-url = '/api/contribuidores'
+url = '/api/contributors'
 headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
 try:
@@ -426,7 +469,7 @@ var options = {
 };
 (async () => {
   try {
-    const response = await got('/api/contribuidores', options);
+    const response = await got('/api/contributors', options);
     // Trabajar el JSON response
   } catch (error) {
     console.log(error.response.body);
@@ -438,38 +481,36 @@ var options = {
 
 ```json
 [
-  {
-    "id": 1,
-    "creado": "2018-02-06T22:02:04.565059Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": true,
-    "orden": 1,
-    "nombre": "Abián Bentor Socorro Leránoz",
-    "creado_por": 1,
-    "modificado_por": 1,
-    "rol": 1,
-    "pais": null
-  },
-  {
-    "id": 2,
-    "creado": "2018-02-06T22:02:45.864183Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": true,
-    "orden": 2,
-    "nombre": "Nekane Oroz Bretón",
-    ...,
-    ...,
-  }
+    {
+        "id": 1,
+        "created": "2018-07-18T20:18:28.798827Z",
+        "modified": null,
+        "trash": false,
+        "publish": true,
+        "order": 0,
+        "name": "Rubio Núñez Rafael",
+        "created_by": 12,
+        "modified_by": 12,
+        "role": 1,
+        "country": null
+    },
+    {
+        "id": 2,
+        "created": "2018-07-18T20:43:29.740325Z",
+        "modified": null,
+        "trash": false,
+        "publish": true,
+        ...,
+    },
+    ...
 ]
 ```
 
-Este endpoint devuelve todos los contribuidores.
+Este endpoint devuelve todos los contributors.
 
 ### HTTP Request
 
-`GET /api/contribuidores`
+`GET /api/contributors`
 
 
 ## Obtener un contribuidor específico
@@ -478,7 +519,7 @@ Este endpoint devuelve todos los contribuidores.
 import requests
 import json
 
-url = '/api/contribuidores/3'
+url = '/api/contributors/3'
 headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
 try:
@@ -502,7 +543,7 @@ var options = {
 };
 (async () => {
   try {
-    const response = await got('/api/contribuidores/3', options);
+    const response = await got('/api/contributors/3', options);
     // Trabajar el JSON response
   } catch (error) {
     console.log(error.response.body);
@@ -513,28 +554,26 @@ var options = {
 > El comando de arriba devuelve un JSON para el contribuidor con id 3, estructurado de la siguiente forma:
 
 ```json
-[
-  {
+{
     "id": 3,
-    "creado": "2018-02-06T22:50:11.809266Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": true,
-    "orden": 3,
-    "nombre": "Rafael Rubio Núñez",
-    "creado_por": 1,
-    "modificado_por": 1,
-    "rol": 1,
-    "pais": null
-  }
-]
+    "created": "2018-07-18T20:43:50.165923Z",
+    "modified": null,
+    "trash": false,
+    "publish": true,
+    "order": 0,
+    "name": "Oroz Bretón Nekane",
+    "created_by": 12,
+    "modified_by": 12,
+    "role": 1,
+    "country": null
+}
 ```
 
 Este endpoint devuelve el contribuidor cuyo id es `id`.
 
 ### HTTP Request
 
-`GET /api/contribuidores/{id}`
+`GET /api/contributors/{id}`
 
 Parámetro | Descripción
 --------- | --------------
@@ -547,7 +586,7 @@ id | El id del contribuidor
 import requests
 import json
 
-url = '/api/contribuidores?ids=(2,3)'
+url = '/api/contributors?ids=2,3'
 headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
 
 try:
@@ -571,7 +610,7 @@ var options = {
 };
 (async () => {
   try {
-    const response = await got('/api/contribuidores?ids=(2,3)', options);
+    const response = await got('/api/contributors?ids=2,3', options);
     // Trabajar el JSON response
   } catch (error) {
     console.log(error.response.body);
@@ -583,40 +622,40 @@ var options = {
 
 ```json
 [
-  {
-    "id": 2,
-    "creado": "2018-02-06T22:02:45.864183Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": true,
-    "orden": 2,
-    "nombre": "Nekane Oroz Bretón",
-    "creado_por": 1,
-    "modificado_por": 1,
-    "rol": 1,
-    "pais": null
-  },
-  {
-    "id": 3,
-    "creado": "2018-02-06T22:50:11.809266Z",
-    "modificado": null,
-    "basura": false,
-    "publicado": true,
-    "orden": 3,
-    "nombre": "Rafael Rubio Núñez",
-    "creado_por": 1,
-    "modificado_por": 1,
-    "rol": 1,
-    "pais": null
-  }
+    {
+        "id": 2,
+        "created": "2018-07-18T20:43:29.740325Z",
+        "modified": null,
+        "trash": false,
+        "publish": true,
+        "order": 0,
+        "name": "Socorro Leránoz Abián Bentor",
+        "created_by": 12,
+        "modified_by": 12,
+        "role": 1,
+        "country": null
+    },
+    {
+        "id": 3,
+        "created": "2018-07-18T20:43:50.165923Z",
+        "modified": null,
+        "trash": false,
+        "publish": true,
+        "order": 0,
+        "name": "Oroz Bretón Nekane",
+        "created_by": 12,
+        "modified_by": 12,
+        "role": 1,
+        "country": null
+    }
 ]
 ```
 
-Este endpoint devuelve el conjunto de contribuidores cuyos ids son `(id1, id2, ..., idN)`.
+Este endpoint devuelve el conjunto de contribuidores cuyos ids son `id1, id2, ..., idN`.
 
 ### HTTP Request
 
-`GET /api/contribuidores?ids=(id1, id2, ..., idN)`
+`GET /api/contribuidores?ids=id1, id2, ..., idN`
 
 # Usuarios
 
