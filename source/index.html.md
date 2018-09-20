@@ -712,3 +712,128 @@ var options = {
 ```
 
 El valor de company debe ser el nombre de la compañia asociada al APIUser que esta haciendo la request.
+
+
+# Búsquedas
+
+## Búsqueda de títulos
+
+```python
+import requests
+import json
+
+url = '/api/titles_search/'
+headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
+body = {
+        "channel": "3def3278-9cf8-42a9-838c-b951745faa90",
+        "filters": {
+            "theme": {
+                "value": [1, 2],
+                "operation": "in"
+            },
+            "author__name": {
+                "value": "Autor",
+                "operation": "icontains"
+            },
+            "or": { # Se realiza un OR de todos los campos especificados en el objeto
+                "publisher__name": {
+                    "value": "Editorial1",
+                    "operation": "iexact"
+                },
+                "publisher__name": {
+                    "value": "Editorial2",
+                    "operation": "iexact"
+                },
+            }
+        },
+        "page_size": 3,
+        "current_page": 1,
+        "include_filters": true # Si es falso la response NO retorna los filtros
+    }
+try:
+    r = requests.post(url, headers=headers, body=body)
+    data = r.json()
+    # Trabajar con el JSON response data
+except requests.exceptions.RequestException as e:
+    print e
+    sys.exit(1)
+```
+
+```javascript
+npm install got
+
+const got = require('got');
+var options = {
+    json: true,
+    headers: {
+        'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'
+    },
+    body: {
+        'channel': '3def3278-9cf8-42a9-838c-b951745faa90',
+        'filters': {
+            'theme': {
+                'value': [1, 2],
+                'operation': 'in'
+            },
+            'author__name': {
+                'value': 'Autor',
+                'operation': 'icontains'
+            },
+            'or': { // Se realiza un OR de todos los campos especificados en el objeto
+                'publisher__name': {
+                    'value': 'Editorial1',
+                    'operation': 'iexact'
+                },
+                'publisher__name': {
+                    'value': 'Editorial2',
+                    'operation': 'iexact'
+                },
+            }
+        },
+        'page_size': 3,
+        'current_page': 1,
+        'include_filters': true // Si es falso la response NO retorna los filtros
+    }
+};
+(async () => {
+    try {
+        const response = await got('/api/titles_search/', options);
+        // Trabajar el JSON response
+    } catch (error) {
+        console.log(error.response.body);
+    }
+})();
+```
+
+> El comando de arriba devuelve un JSON estructurado de la siguiente forma:
+
+```json
+{
+    "results": [
+        {
+            "title_name": "Destellos de Luz",
+            "cover": "url_conver_de_la_imagen",
+            "author__name": "Autor 1",
+            "isbn": "9788497693066",
+            "edition_year": "2000"
+        }
+    ],
+    "filters": [{    --> Si included_filters es true en la request
+        "label": "Autores",
+        "type": "select",
+        "values": [{
+           "value": 1,
+           "label": "Autor 1"
+         }, ...]
+    }, ...],
+    "total_pages": 1,
+    "total_count": 2,
+    "current_page": 1
+ }
+```
+
+Este endpoint devuelve todos los títulos que coinciden con los criterios de búsqueda.
+
+### HTTP Request
+
+`POST /api/titles_search/`
