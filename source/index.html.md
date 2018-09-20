@@ -6,7 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href='#'>Solicitar token</a>
+  - <a href='mailto:soporte@e-libro.com'>Solicitar token</a>
 
 includes:
   - errors
@@ -25,7 +25,7 @@ Para poder interactuar con nuestra API necesita agregar un token al header de ca
 
 `Authorization: Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb`
 
-Este token es provisto por e-Libro. Usted puede [solicitar su token](#)
+Este token es provisto por e-Libro. Usted puede solicitar su token a [soporte@e-libro.com](mailto:soporte@e-libro.com)
 
 <!-- > Para autorizar, use el siguiente código:
 
