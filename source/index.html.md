@@ -69,7 +69,7 @@ try:
     data = r.json()
     # Trabajar con el JSON response data
 except requests.exceptions.RequestException as e:
-    print e
+    print(e)
     sys.exit(1)
 ```
 
@@ -232,7 +232,7 @@ try:
     data = r.json()
     # Trabajar con el JSON response data
 except requests.exceptions.RequestException as e:
-    print e
+    print(e)
     sys.exit(1)
 ```
 
@@ -306,7 +306,7 @@ try:
     data = r.json()
     # Trabajar con el JSON response data
 except requests.exceptions.RequestException as e:
-    print e
+    print(e)
     sys.exit(1)
 ```
 
@@ -374,7 +374,7 @@ try:
     data = r.json()
     # Trabajar con el JSON response data
 except requests.exceptions.RequestException as e:
-    print e
+    print(e)
     sys.exit(1)
 ```
 
@@ -453,7 +453,7 @@ try:
     data = r.json()
     # Trabajar con el JSON response data
 except requests.exceptions.RequestException as e:
-    print e
+    print(e)
     sys.exit(1)
 ```
 
@@ -527,7 +527,7 @@ try:
     data = r.json()
     # Trabajar con el JSON response data
 except requests.exceptions.RequestException as e:
-    print e
+    print(e)
     sys.exit(1)
 ```
 
@@ -594,7 +594,7 @@ try:
     data = r.json()
     # Trabajar con el JSON response data
 except requests.exceptions.RequestException as e:
-    print e
+    print(e)
     sys.exit(1)
 ```
 
@@ -682,7 +682,7 @@ try:
     data = r.json()
     # Trabajar con el JSON response data
 except requests.exceptions.RequestException as e:
-    print e
+    print(e)
     sys.exit(1)
 ```
 
@@ -751,11 +751,11 @@ body = {
         "include_filters": true # Si es falso la response NO retorna los filtros
     }
 try:
-    r = requests.post(url, headers=headers, body=body)
+    r = requests.post(url, headers=headers, data=body)
     data = r.json()
     # Trabajar con el JSON response data
 except requests.exceptions.RequestException as e:
-    print e
+    print(e)
     sys.exit(1)
 ```
 
