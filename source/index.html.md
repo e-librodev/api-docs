@@ -657,62 +657,6 @@ Este endpoint devuelve el conjunto de contribuidores cuyos ids son `id1, id2, ..
 
 `GET /api/contributors?ids=id1, id2, ..., idN`
 
-# Usuarios
-
-## Usuarios E-Reader
-
-### Crear usuario EReaderUser
-
-Usuarios `APIUser` pueden utilizar la API para crear usuarios de tipo `EReaderUser` el cual tiene acceso al lector. Para crear un usuario de este tipo, se hace un a request a `/api/ereaderusers/`
-
-```python
-import requests
-import json
-
-url = '/api/ereaderusers/'
-headers = {'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'}
-data = {
-    'email': 'correo@dominio.com',
-    'password': 'password',
-    'company': 'mycompany'
-}
-
-try:
-    r = requests.get(url, data = data, headers=headers)
-    data = r.json()
-    # Trabajar con el JSON response data
-except requests.exceptions.RequestException as e:
-    print(e)
-    sys.exit(1)
-```
-
-```javascript
-npm install got
-
-const got = require('got');
-var options = {
-  json: true,
-  headers: {
-    'Authorization': 'Token 55ea9b4aa315cdb10d0d97eb9165fe65c3dafedb'
-  },
-  body:
-    'email': 'correo@dominio.com',
-    'password': 'password',
-    'company': 'mycompany'
-  }
-};
-(async () => {
-  try {
-    const response = await got.post('/api/ereaderusers/', options);
-    // Usuario creado
-  } catch (error) {
-    console.log(error.response.body);
-  }
-})();
-```
-
-El valor de company debe ser el nombre de la compañia asociada al APIUser que esta haciendo la request.
-
 
 # Búsquedas
 
